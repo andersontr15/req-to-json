@@ -1,0 +1,18 @@
+{
+  "name": "req-to-json",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [],
+  "author": "Theodore Anderson",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "express": "^4.14.0",
+    "request": "^2.79.0",
+    "request-cache.js": "^1.0.3",
+    "request-promise": "^4.1.1"
+  }
+}
