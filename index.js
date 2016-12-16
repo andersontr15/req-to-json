@@ -1,5 +1,6 @@
 var request = require('request-promise');
 var fs = require('fs');
+var path = require('path');
 
 var store = function(url, fileName, callback) {
     if(!url || !fileName) {
@@ -10,15 +11,14 @@ var store = function(url, fileName, callback) {
         headers: {
             'User-Agent': 'request'
         }
-    }
+    };
     request(options)
         .then(function(response) {
             fs.writeFile(fileName, response, function(err) {
                 if(err) {
-                    console.log(err);
-                    return err;
+                    callback(err, null);
                 };
-                callback();
+                callback(null, JSON.parse(response));
             });
         })
         .catch(function(error) {
@@ -29,33 +29,30 @@ var store = function(url, fileName, callback) {
         });
 };
 
-var get = function(url) {
-    if(!url) {
+var getJSON  = function(fileName) {
+    if(!fileName) {
        throw new Error("Please provide a valid url");
     }
     return new Promise(function(resolve, reject) {
-        fs.readFile(url, 'utf8', function(err, data) {
-            if(err) {
-                reject(err);
-            }
-            resolve(data);
-        });
+        try {
+            fs.readFile(fileName, 'utf8', function(err, data) {
+                if(err) {
+                    reject('File does not exist! Please create the file in your directory and try again!');
+                }
+                else {
+                    resolve(JSON.parse(data));
+                };
+          });
+        }
+        catch(error) {
+            if(err.code === 'ENOENT') {
+                reject('File does not exist! Please create the file in your directory and try again!');
+            };
+        };
     });
 };
 
 module.exports = {
     store: store,
-    get: get
+    getJSON: getJSON
 };
-
-// Example
-
-// Get json from file
-// getJSON('user.json').then(function(response) {
-//     console.log(JSON.parse(response));
-// }).catch(function(err) {
-//     console.log(err);
-// })
-
-// Store json in a file
-// storeJSON('http://api.github.com/users/andersontr15', 'user.json');
