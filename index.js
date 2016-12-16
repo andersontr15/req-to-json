@@ -1,6 +1,5 @@
 var request = require('request-promise');
 var fs = require('fs');
-var path = require('path');
 
 var store = function(url, fileName, callback) {
     if(!url || !fileName) {
