@@ -15,13 +15,13 @@ var store = function(url, fileName, callback) {
         .then(function(response) {
             fs.writeFile(fileName, response, function(err) {
                 if(err) {
-                    callback(err, null);
+                    return callback(err, null);
                 };
-                callback(null, JSON.parse(response));
+                return callback(null, JSON.parse(response));
             });
         })
         .catch(function(error) {
-            return error;
+            return callback(error, null);
         });
 };
 
