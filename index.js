@@ -13,11 +13,11 @@ var store = function(url, fileName, callback) {
     };
     request(options)
         .then(function(response) {
-            fs.writeFile(fileName, data, function(err) {
+            fs.writeFile(fileName, response, function(err) {
                 if(err) {
                     return callback(err, null);
                 };
-                var data = JSON.parse(data);
+                var data = JSON.parse(response);
                 return callback(null, data);
             });
         })
