@@ -1,6 +1,3 @@
-req-to-json.js
-===========
-
 Simple express middleware to take data from an API get request and store in a file in your project
 This node module also allows you to access the data in JSON format.
 
