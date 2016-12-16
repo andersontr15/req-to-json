@@ -22,9 +22,6 @@ var store = function(url, fileName, callback) {
         })
         .catch(function(error) {
             return error;
-        })
-        .finally(function() {
-            console.log('Request has finished');
         });
 };
 
