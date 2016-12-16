@@ -25,16 +25,13 @@ app.get('/', function(request, response) {
        }
     });
     // Similarly, to use the get method 
-    jsonStore.get(url)
+    jsonStore.getJSON(url)
         .then(function(response) {
             // Handle success callback
          })
          .catch(function(error) {
              // Handle error callback
-         })
-         .finally(function() {
-             // Handle when request has finished (successful or not)
-         })
+         });
 });
 ```
 
