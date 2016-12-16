@@ -8,6 +8,9 @@
   "keywords": [],
   "author": "Theodore Anderson",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/andersontr15/req-to-json"
+  },
   "description": "",
   "dependencies": {
     "express": "^4.14.0",
