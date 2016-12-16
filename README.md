@@ -16,8 +16,13 @@ var app = express();
 
 
 app.get('/', function(request, response) {
-	jsonStore.store(url, fileName, function() {
-       // Continuation of code execution goes here     
+	jsonStore.store(url, fileName, function(err, data) {
+       if(err) {
+           // Do something with the error
+       }
+       else {
+           // Do something with the data
+       }
     });
     // Similarly, to use the get method 
     jsonStore.get(url)
