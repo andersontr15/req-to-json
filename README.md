@@ -1,4 +1,3 @@
-req-to-json.js
 ===========
 
 Simple express middleware to take data from an API get request and store in a file in your project
