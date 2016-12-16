@@ -26,7 +26,7 @@ var store = function(url, fileName, callback) {
 };
 
 var getJSON  = function(fileName) {
-    if(!fileName) {
+    if(!fileName || typeof fileName !== 'string') {
        throw new Error("Please provide a valid url");
     }
     return new Promise(function(resolve, reject) {
