@@ -3,7 +3,7 @@
   "version": "1.1.19",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha ./test/index.js"
   },
   "keywords": [],
   "author": "Theodore Anderson",
