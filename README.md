@@ -24,7 +24,7 @@ app.get('/', function(request, response) {
        }
     });
     // Similarly, to use the get method 
-    jsonStore.getJSON(url)
+    jsonStore.getJSON(fileName)
         .then(function(response) {
             // Handle success callback
          })
