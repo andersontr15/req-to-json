@@ -1,6 +1,45 @@
 var request = require('request-promise');
 var fs = require('fs');
 
+var storeByField = function(url, fileName, fields, callback) {
+    if(!url || !fileName || !fields) {
+        throw new Error("Please provide a valid url, filename and fields");
+    }
+    var fields = fields;
+    var options = {
+        url: url,
+        headers: {
+            'User-Agent': 'request'
+        }
+    }
+    request(options)
+        .then(function(response) {
+            var response = JSON.parse(response);
+            var filteredData = {};
+            var count = 0;
+            for(var key in response) {
+                if(fields.indexOf(key) > -1)  {
+                    count += 1;
+                    filteredData[key] = response[key];
+                }
+            }
+            if(count === 0) {
+                return callback('No fields match!', null);
+            }
+
+            fs.writeFile(fileName, JSON.stringify(filteredData), function(err) {
+                if(err) {
+                    return callback(err, null)
+                }
+                return callback(null, filteredData)
+            })
+        })
+        .catch(function(err) {
+            return callback(err, null)
+        })
+}
+
+
 var store = function(url, fileName, callback) {
     if(!url || !fileName) {
         throw new Error("Please provide a valid url & fileName");
@@ -42,7 +81,7 @@ var getJSON  = function(fileName) {
           });
         }
         catch(error) {
-            if(err.code === 'ENOENT') {
+            if(error.code === 'ENOENT') {
                 reject('File does not exist! Please create the file in your directory and try again!');
             };
         };
@@ -51,5 +90,6 @@ var getJSON  = function(fileName) {
 
 module.exports = {
     store: store,
-    getJSON: getJSON
+    getJSON: getJSON,
+    storeByField: storeByField
 };

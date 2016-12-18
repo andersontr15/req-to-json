@@ -23,8 +23,22 @@ app.get('/', function(request, response) {
            // Do something with the data
        }
     });
-    // Similarly, to use the get method 
-    jsonStore.getJSON(fileName)
+  // Store by fields --> add specific data fields. E.g. (github --> ['login', 'id'])
+  jsonStore.storeByField(url, fileName, fieldsArray, function(err, data) {
+      if(err) {
+           // Do something with the error
+       }
+       else {
+           // Do something with the data
+           {
+            "login": "yourlogin", 
+            "id": 2343345
+           }
+       }
+  })
+
+  // Similarly, to use the get method 
+  jsonStore.getJSON(fileName)
         .then(function(response) {
             // Handle success callback
          })
