@@ -55,7 +55,9 @@ app.get('/', function(request, response) {
          .catch(function(error) {
              // Handle error callback
          });
-});
+  });
+
+}
 ```
 
 Built by Theodore Anderson
