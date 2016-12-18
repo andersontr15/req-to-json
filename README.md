@@ -4,9 +4,9 @@ This node module also allows you to access the data in JSON format.
 
 Methods currently: 
 -----------------
-** getJSON
-** store
-** storeByField
+- getJSON
+- store
+- storeByField
 
 To use in Node:
 
