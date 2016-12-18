@@ -11,7 +11,7 @@ var storeByField = function(url, fileName, fields, callback) {
         headers: {
             'User-Agent': 'request'
         }
-    }
+    };
     request(options)
         .then(function(response) {
             var response = JSON.parse(response);
