@@ -90,6 +90,6 @@ var getJSON  = function(fileName) {
 
 module.exports = {
     store: store,
-    getJSON: getJSON,
-    storeByField: storeByField
+    storeByField: storeByField,
+    getJSON: getJSON
 };
