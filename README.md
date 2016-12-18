@@ -39,10 +39,10 @@ app.get('/', function(request, response) {
        }
        else {
            // Do something with the data
-           {
-            "login": "yourlogin", 
-            "id": 2343345
-           }
+           //{
+           // "login": "yourlogin", 
+           // "id": 2343345
+           //}
        }
   })
 
