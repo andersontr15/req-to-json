@@ -13,10 +13,7 @@
   },
   "description": "",
   "dependencies": {
-    "chai": "^3.5.0",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
-    "supertest": "^2.0.1",
-    "mocha": "latest"
   }
 }
